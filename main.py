@@ -838,11 +838,8 @@ def set_disable_hour(message):
 
 
 if __name__ == "__main__":
-    while True:
-            try:
-                bot.infinity_polling(timeout=60, long_polling_timeout=60)
-            except Exception:
-                time.sleep(10)
+            bot.infinity_polling(timeout=60, long_polling_timeout=60)
+
             
             
        
