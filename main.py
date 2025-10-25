@@ -569,7 +569,7 @@ def reserve(message, mode='normal'):
     user_time[cid] = {}
 
     user_status = check_user(cid)
-    if user_status is None:
+    if user_status == None:
         bot.copy_message(cid, Channel_cid, message_ids['sign_up'], reply_markup=hideboard)
         start_registration(message)
         return
