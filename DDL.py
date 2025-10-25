@@ -17,8 +17,6 @@ def set_zone():
 def create_n_drop_database(db_name):
     conn = mysql.connector.MySQLConnection(user=config['user'], password=config['password'], host=config['host'])
     cur = conn.cursor()
-    cur.execute(f"DROP DATABASE IF EXISTS {db_name}")
-    conn.commit()
     cur.execute(f"CREATE DATABASE IF NOT EXISTS {db_name}")
     conn.commit()
     cur.close()
