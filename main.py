@@ -522,8 +522,12 @@ def welcome(message):
     keyboard.add(texts['groom_reserve'])
     keyboard.add(texts['skin_reserve'])
     keyboard.add(texts['panel'])
-    
-    bot.send_message(cid, texts['menu'], reply_markup=keyboard)
+    try:
+        result = get_user_detail(cid)
+        name = result[1]
+        bot.send_message(cid, texts['menu'], reply_markup=keyboard)
+    except Exception:
+        start_registration(message)
     
 
 @bot.message_handler(commands=['help'])
@@ -568,11 +572,6 @@ def reserve(message, mode='normal'):
 
     user_time[cid] = {}
 
-    user_status = check_user(cid)
-    if user_status == None:
-        bot.copy_message(cid, Channel_cid, message_ids['sign_up'], reply_markup=hideboard)
-        start_registration(message)
-        return
     
     bot.copy_message(cid, Channel_cid, message_ids['reserve_select'], reply_markup=hideboard)
 
