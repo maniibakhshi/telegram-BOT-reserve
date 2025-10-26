@@ -366,7 +366,7 @@ def approve_reserve(call):
     action, res_id, date, time = call.data.split('|')
     user_id = get_reseve_detail(res_id)[-1]
     service = get_reseve_detail(res_id)[1]
-    keyboard = ReplyKeyboardMarkup()
+    keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(texts['back'])
     if cid != admins:
         welcome(call.message)
